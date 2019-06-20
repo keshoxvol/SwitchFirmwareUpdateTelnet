@@ -1,0 +1,6 @@
+username = admin
+password = 1234
+delay = 1
+time_sleep_download = 5
+ip_tftp = 192.168.100.8
+name_file = mes2000-11485.ros
