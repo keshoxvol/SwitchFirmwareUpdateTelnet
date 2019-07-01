@@ -16,7 +16,8 @@ name_file = ""
 
 
 
-successfully_authorization= str(b'****\r\n\r\r\n\r\nconsole#')
+successfully_authorization = str(b'****\r\n\r\r\n\r\nconsole#')
+successfully_authorization1 = "#'"
 
 
 
@@ -138,13 +139,13 @@ def main():
         time.sleep(delay)
         returned = str(tel.read_very_eager()) #смотрим что вернет комод после строки с паролем
 
-        if returned != successfully_authorization:
+        if returned.endswith(successfully_authorization1) == False: #!= successfully_authorization:
             print("Ошибка авторизации")
             file_of_error_ip = open("ip_error.txt", "a")
             file_of_error_ip.write(ip_adress + "Ошибка авторизации")
             file_of_error_ip.close()
             continue
-        elif returned == successfully_authorization:
+        elif returned.endswith(successfully_authorization1) == True: #== successfully_authorization:
             print("Успешная авторизация")
             file_win_ip = open("ip_win.txt", "a")
             file_win_ip.write(ip_adress + "\n")
@@ -182,13 +183,13 @@ def main():
         time.sleep(delay)
         returned = str(tel.read_very_eager())  # смотрим что вернет комод после строки с паролем
 
-        if returned != successfully_authorization:
+        if returned.endswith(successfully_authorization1) == False: #!= successfully_authorization:
             print("Ошибка авторизации")
             file_of_error_ip = open("ip_error_step_2.txt", "a")
             file_of_error_ip.write(ip_adress + "Ошибка авторизации")
             file_of_error_ip.close()
             continue
-        elif returned == successfully_authorization:
+        elif returned.endswith(successfully_authorization1) == True: #== successfully_authorization:
             print("Успешная авторизация")
 
         send_command("enable")
